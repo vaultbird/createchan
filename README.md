@@ -20,4 +20,4 @@ multiple chains.
 
 ### Example Usage
 
-See [test](./test/Createchan.t.sol);
+See [test file](./test/Createchan.t.sol).
