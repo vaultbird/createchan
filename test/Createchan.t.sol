@@ -4,8 +4,16 @@ pragma solidity 0.8.21;
 import {Test} from "@std/Test.sol";
 import {Createchan} from "../src/Createchan.sol";
 
-contract ContractNoArgs {}
+/// @title ContractNoArgs
+/// @author sepyke.eth
+/// @notice Example contract without args to be deployed with Createchan
+contract ContractNoArgs {
+  uint256 public value = 42;
+}
 
+/// @title ContractWithArgs
+/// @author sepyke.eth
+/// @notice Example contract with args to be deployed with Createchan
 contract ContractWithArgs {
   uint256 public arg1;
   address public arg2;
@@ -16,6 +24,9 @@ contract ContractWithArgs {
   }
 }
 
+/// @title CreatechanTest
+/// @author sepyke.eth
+/// @notice Createchan test
 contract CreatechanTest is Test {
   address deployer = vm.addr(0xB45ED);
   bytes32 salt = "createchan";
@@ -36,6 +47,9 @@ contract CreatechanTest is Test {
     address predicted = createchan.getDeployed(deployer, salt);
     assertEq(deployed, predicted);
     vm.stopPrank();
+
+    ContractNoArgs deployment = ContractNoArgs(deployed);
+    assertEq(deployment.value(), 42);
   }
 
   /// @notice Deploy smart contract with args
