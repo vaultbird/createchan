@@ -20,4 +20,4 @@ multiple chains.
 
 ### Example Usage
 
-TODO(pyk): add example usage here
+See [test](./test/Createchan.t.sol);
